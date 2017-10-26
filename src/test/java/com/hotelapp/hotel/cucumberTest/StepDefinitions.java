@@ -11,11 +11,17 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.fail;
 
 public class StepDefinitions extends WebLayerTest {
 
@@ -24,7 +30,6 @@ public class StepDefinitions extends WebLayerTest {
     private SignUpPage signUpPage;
     private LoginPage loginPage;
     private BookingsPage bookingsPage;
-    private FailScreenshot screenshot;
 
 
     @Before
@@ -41,11 +46,10 @@ public class StepDefinitions extends WebLayerTest {
 
     @After
     public void tearDown(Scenario scenario){
-        screenshot = new FailScreenshot(driver);
-        try {
-            screenshot.embedScreenshot(scenario);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (scenario.isFailed()) {
+            final byte[] screenshot = ((TakesScreenshot) driver)
+                    .getScreenshotAs(OutputType.BYTES);
+            scenario.embed(screenshot, "image/png"); //stick it in the report
         }
         driver.quit();
     }
@@ -117,7 +121,7 @@ public class StepDefinitions extends WebLayerTest {
 
     @Then("^scenario should fail$")
     public void scenario_should_fail() throws Throwable {
-        indexPage.enterZip();
+        fail("This scenario is a fail to test the screenshot on fail functionality");
     }
 
     @And("^user enters new valid username$")
