@@ -38,7 +38,6 @@ public class AjaxController {
 	}
 
 	@RequestMapping(value = "/bookings/delete/{hotelId}", method = RequestMethod.DELETE)
-	@ResponseStatus(value = HttpStatus.OK)
 	public ResponseEntity<?> deleteBooking(HttpServletRequest request, @PathVariable("hotelId") String hotelId) {
 		
 		User user = userService.getUserSessionInfo(request);

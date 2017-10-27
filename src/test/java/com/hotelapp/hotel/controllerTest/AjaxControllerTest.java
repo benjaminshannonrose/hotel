@@ -1,4 +1,4 @@
-package com.hotelapp.hotel.unitTest.controllerTest;
+package com.hotelapp.hotel.controllerTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hotelapp.hotel.controller.AjaxController;
@@ -7,8 +7,6 @@ import com.hotelapp.hotel.model.User;
 import com.hotelapp.hotel.pojo.AjaxBookingInfo;
 import com.hotelapp.hotel.service.BookingService;
 import com.hotelapp.hotel.service.UserService;
-import org.apache.http.entity.StringEntity;
-import org.json.JSONArray;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

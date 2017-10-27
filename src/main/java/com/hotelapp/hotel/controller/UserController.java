@@ -31,13 +31,13 @@ public class UserController {
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String index(ModelMap model) {
     	model.addAttribute("bookingForm", new Booking());
-    	return "index";
+    	return "/index";
     }
     
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String registration(ModelMap model) {
     	model.addAttribute("userForm", new User());
-        return "signup";
+        return "/signup";
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
@@ -46,7 +46,7 @@ public class UserController {
         userValidator.validate(userForm, result);
 
         if (result.hasErrors()){
-            return "signup";
+            return "/signup";
         }
 
         userService.saveUser(userForm);
@@ -58,7 +58,7 @@ public class UserController {
     public String login(ModelMap model) {
 
         model.addAttribute("loginForm", new User());
-        return "login";
+        return "/login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)

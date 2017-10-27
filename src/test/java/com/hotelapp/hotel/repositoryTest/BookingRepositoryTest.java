@@ -1,4 +1,4 @@
-package com.hotelapp.hotel.unitTest.repositoryTest;
+package com.hotelapp.hotel.repositoryTest;
 
 
 import com.hotelapp.hotel.model.Booking;

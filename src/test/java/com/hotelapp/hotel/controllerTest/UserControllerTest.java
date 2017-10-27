@@ -1,7 +1,6 @@
-package com.hotelapp.hotel.unitTest.controllerTest;
+package com.hotelapp.hotel.controllerTest;
 
 import com.hotelapp.hotel.controller.UserController;
-import com.hotelapp.hotel.model.Booking;
 import com.hotelapp.hotel.model.User;
 import com.hotelapp.hotel.service.BookingService;
 import com.hotelapp.hotel.service.UserService;
