@@ -1,4 +1,4 @@
-package com.hotelapp.hotel.serviceTest;
+package com.hotelapp.hotel.unitTest.serviceTest;
 
 import com.hotelapp.hotel.model.User;
 import com.hotelapp.hotel.repository.UserRepository;

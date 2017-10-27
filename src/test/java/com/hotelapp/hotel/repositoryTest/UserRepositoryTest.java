@@ -1,4 +1,4 @@
-package com.hotelapp.hotel.repositoryTest;
+package com.hotelapp.hotel.unitTest.repositoryTest;
 
 import com.hotelapp.hotel.model.User;
 import com.hotelapp.hotel.repository.UserRepository;
@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.transaction.Transactional;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
