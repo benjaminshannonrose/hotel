@@ -29,8 +29,8 @@ $(document).ready(function() {
 		var latLng;
 	    var geocoder = new google.maps.Geocoder();
 	    google.maps.visualRefresh = true;
+        $('#myModal').modal({show: true});
 		initialize();
-		$('#myModal').modal({show: true});
 		
 		function initialize(){
 		    geocoder.geocode( {'placeId': placeId}, function(results, status) {
@@ -40,13 +40,13 @@ $(document).ready(function() {
 			         latLng = {lat: lat, lng: lng};
 					  	
 			         var mapOptions = {
-						    zoom: 19,
-						    center: new google.maps.LatLng(latLng),
+						    zoom: 12,
+						 	anchor: latLng,
+						    center: latLng,
 			         		mapTypeId: google.maps.MapTypeId.ROADMAP
 					   	};
 					  	map = new google.maps.Map(document.getElementById('modalBody'), mapOptions);
-						  	
-					  	infoWindow = new google.maps.InfoWindow();
+
 					  	var service = new google.maps.places.PlacesService(map);
 					    service.getDetails({
 					        placeId: placeId
@@ -57,14 +57,18 @@ $(document).ready(function() {
 					        }
 					        var marker = new google.maps.Marker({
 					          map: map,
-					          position: result.geometry.location
+					          position: latLng
 					        });
 					        var address = result.adr_address;
 					        var newAddr = address.split("</span>,");
 
-					        infoWindow.setContent(result.name + "<br>" + newAddr[0] + "<br>" + newAddr[1] + "<br>" + newAddr[2]);
+                            infoWindow = new google.maps.InfoWindow({
+                                content:result.name + "<br>" + newAddr[0] + "<br>" + newAddr[1] + "<br>" + newAddr[2],
+                                disableAutoPan: false
+                            });
 
 					        google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+                                map.panTo(latLng);
                                 infoWindow.open(map, marker);
 							});
 			      		});

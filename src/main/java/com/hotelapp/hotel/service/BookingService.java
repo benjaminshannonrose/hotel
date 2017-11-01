@@ -31,6 +31,7 @@ public class BookingService {
 	
 	public void deleteBooking(Booking booking) {
 		bookingRepository.delete(booking);
+		/*bookingRepository.findByUser(new User()).*/
 	}
 	
 }

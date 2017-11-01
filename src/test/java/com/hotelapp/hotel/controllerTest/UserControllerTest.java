@@ -9,10 +9,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -20,6 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 
 
 import static org.mockito.Matchers.any;
@@ -44,8 +47,6 @@ public class UserControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-    @Autowired
-    private UserValidator userValidator;
     @MockBean
     private UserService userService;
     @MockBean
@@ -54,6 +55,9 @@ public class UserControllerTest {
     private ModelMap model;
     @MockBean
     private BookingService bookingService;
+    @SpyBean
+    private UserValidator userValidator;
+
 
 
     @Before
@@ -124,8 +128,8 @@ public class UserControllerTest {
     public void loginPostSadPathTest() throws Exception{
 
         mockMvc.perform(post("/login")
-                .param("username", "suchanawfulname")
-                .param("password","sketchypassword")
+                .param("username", "notarealname")
+                .param("password","notarealpassword")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .accept(MediaType.APPLICATION_FORM_URLENCODED))
                 .andExpect(status().isOk())

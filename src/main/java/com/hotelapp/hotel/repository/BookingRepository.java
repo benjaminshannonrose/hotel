@@ -9,9 +9,9 @@ import com.hotelapp.hotel.model.User;
 
 public interface BookingRepository extends JpaRepository<Booking, Long>{
 	
-	public List<Booking> findByUser(User user);
+	List<Booking> findByUser(User user);
 	
-	public Booking findByUserAndHotelId(User user, String hotelId);
+	Booking findByUserAndHotelId(User user, String hotelId);
 
 
 }
