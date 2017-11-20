@@ -14,6 +14,7 @@ $( document ).ready(function() {
             bookInfo["hotelName"] = bookHotelName;
             bookInfo["hotelId"] = bookHotelId;
             var bookData = JSON.stringify(bookInfo);
+            $(this).text("BOOKED!");
             bookingAjaxSubmit();
 
             function bookingAjaxSubmit(){
@@ -24,7 +25,7 @@ $( document ).ready(function() {
 					dataType: "json",
 					data: bookData,
 					success: function (result) {
-                        alert("Hotel booked! Go to 'View Bookings' page to view all of your bookings.");
+                        hotelBooked.fadeOut(1000);
                         hotelBooked.remove();
 					},
 					error: function (e) {
@@ -37,8 +38,8 @@ $( document ).ready(function() {
 	
 	
 	
-	var myButton = $('#findHotel')
-	var hotelSearchText = $('#hotelSearchBar')
+	var myButton = $('#findHotel');
+	var hotelSearchText = $('#hotelSearchBar');
 	var hotels = [];
 	myButton.on('click',function(e){
 		e.preventDefault();
@@ -78,20 +79,14 @@ $( document ).ready(function() {
 			$('#topTenHotels').empty();
 			for(var x in hotels){
 				var hotelName = hotels[x].name;
-				var hotelAddress = hotels[x].vicinity;
 				var hotelPlaceId = hotels[x].place_id;
 				$('#topTenHotels').append($('<div class ="row">'));
 				$('#topTenHotels').children().eq(x).append($('<p class ="col-xs-10 col-sm-11 hotelName">').text(hotelName));
-				$('#topTenHotels').children().eq(x).append($('<button class="col-xs-2 col-sm-1 btn btn-primary btn-sm book">Book!</button>'));
+				$('#topTenHotels').children().eq(x).append($('<button class="col-xs-2 col-sm-1 btn btn-primary btn-sm book">Book</button>'));
 				$('#topTenHotels').children().eq(x).append($('<p class = "hotelId">').text(hotelPlaceId));
 			}
 		}
 	}
-	
-	
-  	function isEmpty(el){
-      	return !$.trim(el.html())
-  	}
 });
 
 

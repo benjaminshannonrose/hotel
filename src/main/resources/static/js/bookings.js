@@ -11,8 +11,8 @@ $(document).ready(function() {
 				url: "/bookings/delete/" + hotelId,
 				contentType: "application/json",
 			    dataType : "json",
-			    success: function (result) {       
-			           alert("Booking deleted!"); 
+			    success: function (result) {
+			           bookingData.fadeOut(1000);
 			           bookingData.remove();
 			    },
 			    error: function (e) {
