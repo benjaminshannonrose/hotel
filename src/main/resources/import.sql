@@ -9,6 +9,7 @@ INSERT INTO user (id, password, username) values (default, '123456789', 'booking
 
 INSERT INTO booking (reservation_id, hotel_id, hotel_name, user_id) values (default, 'ChIJjWrkXge8woARQa2f1ewAZqA', 'Beverly Hills Hotel', 1);
 INSERT INTO booking (reservation_id, hotel_id, hotel_name, user_id) values (default, 'ChIJR5onXby-woARNYxlILROsfk', 'Sunset Marquis', 1);
+INSERT INTO booking (reservation_id, hotel_id, hotel_name, user_id) values (default, 'ChIJjWrkXge8woARQa2f1ewAZqA', 'Beverly Hills Hotel', 2);
 INSERT INTO booking (reservation_id, hotel_id, hotel_name, user_id) values (default, 'ChIJjWrkXge8woARQa2f1ewAZqA', 'Beverly Hills Hotel', 3);
 INSERT INTO booking (reservation_id, hotel_id, hotel_name, user_id) values (default, 'ChIJR5onXby-woARNYxlILROsfk', 'Sunset Marquis', 3);
 INSERT INTO booking (reservation_id, hotel_id, hotel_name, user_id) values (default, 'ChIJjWrkXge8woARQa2f1ewAZqA', 'Beverly Hills Hotel', 4);
