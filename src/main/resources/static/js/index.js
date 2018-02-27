@@ -25,7 +25,7 @@ $( document ).ready(function() {
 					dataType: "json",
 					data: bookData,
 					success: function (result) {
-                        bookedButton.text("BOOKED!");
+                        $(this).text("BOOKED!");
                         hotelBooked.fadeOut(2000);
 					},
 					error: function (e) {
