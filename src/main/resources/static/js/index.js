@@ -3,6 +3,7 @@ $( document ).ready(function() {
 		e.preventDefault();
         var bookHotelName = $(this).prev().text();
         var bookHotelId = $(this).next().text();
+        var bookedButton = $(this);
         var hotelBooked = $(this).parent();
 
         if($.trim($("#sessionUser").html())==""){
@@ -14,7 +15,6 @@ $( document ).ready(function() {
             bookInfo["hotelName"] = bookHotelName;
             bookInfo["hotelId"] = bookHotelId;
             var bookData = JSON.stringify(bookInfo);
-            $(this).text("BOOKED!");
             bookingAjaxSubmit();
 
             function bookingAjaxSubmit(){
@@ -25,8 +25,8 @@ $( document ).ready(function() {
 					dataType: "json",
 					data: bookData,
 					success: function (result) {
-                        hotelBooked.fadeOut(1000);
-                        hotelBooked.remove();
+                        bookedButton.text("BOOKED!");
+                        hotelBooked.fadeOut(2000);
 					},
 					error: function (e) {
                         alert("Something went wrong, try again later.");
